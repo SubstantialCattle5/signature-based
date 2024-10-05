@@ -2,7 +2,6 @@ import sys
 import re
 from signature import Signature
 
-
 # Regular expression pattern for matching signature rules
 REGEX = re.compile(r""" ^
     (\d{,99999}:\s)?          #! sID Range badaio 
@@ -19,7 +18,7 @@ REGEX = re.compile(r""" ^
 DEFAULT_RULEPATH = 'eval.rules'
 
 
-def load_rules(rule_path):
+def load_rules(rule_path="test.rules"):
     """
     Load signature rules from a file.
 
@@ -36,6 +35,8 @@ def load_rules(rule_path):
         sys.exit(f"Error: Rule file '{rule_path}' not found.")
     else:
         return [Signature(rule.strip()) for rule in rules if rule.strip() and not rule.startswith('#')]
+
+
 #
 # try:
 #     RULES = load_rules(RULEPATH)

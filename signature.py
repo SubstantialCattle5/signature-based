@@ -118,7 +118,7 @@ class Signature:
         return f"Signature(action='{self.action}', protocol='{self.protocol}', source_ip='{self.source_ip}', " \
                f"destination_ip='{self.destination_ip}', source_port='{self.source_port}', " \
                f"destination_port='{self.destination_port}', options={self.options})"
-
+0
 
 if __name__ == "__main__":
     # Read signature rules from file

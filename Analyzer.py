@@ -3,7 +3,6 @@ from multiprocessing import Process, Event, Queue
 from scapy.layers.l2 import Ether
 
 from signature import Signature
-from importer import RULES
 
 
 class Analyzer(Process):
@@ -28,28 +27,12 @@ class Analyzer(Process):
         Check if a packet matches any intrusion rule.
 
         Args:
-            packet (Ether):  packet to analyze.
+            packet ():  packet to analyze.
             packet_index (int): Index of the packet.
 
         Returns:
             bool: True if intrusion detected, False otherwise.
         """
-        packet_summary = packet.summary()
-        try:
-            packet_signature = Signature(packet)
-        except ValueError as err:
-            print(f"Error: {err} - Packet summary: {packet_summary}")
-            return False
-
-        for rule in RULES:
-            if packet_signature == rule:
-                intrusion_msg = f"Intrusion detected: {rule} ~> {packet_summary}"
-                print(f"[!!] {intrusion_msg}")
-                self.output_file.write(f"{intrusion_msg}\n")
-                self.output_file.flush()
-                return True
-        print(f"[=] No intrusion detected - Packet summary: {packet_summary}")
-        return False
 
     def run(self):
         """

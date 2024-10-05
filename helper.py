@@ -28,19 +28,6 @@ def check_ip(ip1: str, ip2: str) -> bool:
 
     return False
 
-def equality_check(sig1, sig2) -> bool:
-    """
-    Check inequality based on comparison rules.
-
-    Args:
-        sig1 (Signature): The value to compare against.
-        sig2 (Signature): The value to compare.
-    Returns:
-        bool: True if inequality holds, False otherwise.
-    """
-
-    return False
-
 
 if __name__ == "__main__":
     pass
